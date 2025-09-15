@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -45,15 +46,15 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun Play(modifier: Modifier = Modifier) {
     var lucky = (1..100).random()
 
-    Text(
-        text = "樂透數字(1-100)為 $lucky",
-        modifier = modifier
-    )
+    Column(modifier = modifier) { // <-- 將 Text 和 Button 放在 Column 中
+        Text(
+            text = "樂透數字(1-100)為 $lucky"
+        )
 
-    Button(
-        onClick = { lucky = (1..100).random() }
-    ) {
-        Text("重新產生樂透碼")
+        Button(
+            onClick = { lucky = (1..100).random() }
+        ) {
+            Text("重新產生樂透碼")
+        }
     }
-
 }
